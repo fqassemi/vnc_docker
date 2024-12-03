@@ -36,7 +36,7 @@ On macOS: Use the Finder menu Go > Connect to Server..., then enter:
 vnc://localhost:5959
 On other platforms: Use a VNC client and connect to localhost:5959.
 
-When prompted, use the password yourpassword (or whatever you configured).
+When prompted, use the password `yourpassword` (or whatever you configured).
 
 3. Docker-Specific Configuration:
 
