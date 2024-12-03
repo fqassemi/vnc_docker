@@ -24,21 +24,22 @@ docker build -t vncserver-basic .
 docker run -it --rm -p 5959:5905 vncserver-basic
 ```
 
-# Important Notes
-1. Port Mapping:
+## Important Notes
+1. **Port Mapping**  
+   The VNC server runs on port `5905` inside the Docker container. The VPS's exposed port is mapped to `5959`. Ensure your firewall settings allow traffic on this port.
 
-The VNC server runs on port 5905 inside the Docker container.
-The VPS's exposed port is mapped to 5959. Ensure your firewall settings allow traffic on this port.
+2. **Connecting to the VNC Server**  
+   - **On macOS**:  
+     Use the Finder menu:  
+     `Go > Connect to Server...`, then enter:  
+     `vnc://localhost:5959`
 
-2. Connecting to the VNC Server:
+   - **On other platforms**:  
+     Use a VNC client and connect to `localhost:5959`.
 
-On macOS: Use the Finder menu Go > Connect to Server..., then enter:
-vnc://localhost:5959
-On other platforms: Use a VNC client and connect to localhost:5959.
+   When prompted, use the password `yourpassword` (or whatever you configured).
 
-When prompted, use the password `yourpassword` (or whatever you configured).
+3. **Docker-Specific Configuration**  
+   - The VNC server is started with the `-localhost no` option to allow external connections.  
+   - The command `tail -f /dev/null` ensures the container keeps running even after the VNC session is initialized.
 
-3. Docker-Specific Configuration:
-
-The VNC server is started with the -localhost no option to allow external connections.
-The command tail -f /dev/null ensures the container keeps running even after the VNC session is initialized.
