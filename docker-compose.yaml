@@ -1,0 +1,12 @@
+services:
+  vncserver:
+    build: .
+    container_name: vncserver
+    ports:
+      - "5959:5905"  # Corrected port mapping: Map host port 5959 to container port 5905
+    volumes:
+      - ./data:/root/.mozilla/firefox  # Persist Firefox history, cookies, etc.
+      - ./.vnc:/root/.vnc              # Persist VNC-related files (e.g., password, settings)
+    environment:
+      - DISPLAY=:5
+    restart: always  # Automatically restart the container if it stops
